@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://b6cfc64ej4ovy"
+path="res://.godot/imported/AgentBrown.aseprite-11e92f4849c76a95a9da8924aaf01320.res"
+
+[deps]
+
+source_file="res://Player/AgentBrown.aseprite"
+dest_files=["res://.godot/imported/AgentBrown.aseprite-11e92f4849c76a95a9da8924aaf01320.res"]
+
+[params]
+
