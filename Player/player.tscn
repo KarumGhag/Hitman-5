@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://r1rcdcocn5hc"]
+[gd_scene load_steps=7 format=3 uid="uid://r1rcdcocn5hc"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_bvebw"]
 [ext_resource type="Texture2D" uid="uid://8s7qvbl3xoqy" path="res://Player/AgentBrown2.png" id="1_ecbll"]
@@ -41,6 +41,9 @@ _data = {
 "Walk": SubResource("Animation_asv7t")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gfpsm"]
+size = Vector2(5, 5)
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animator")]
 script = ExtResource("1_bvebw")
 accel = 0.25
@@ -74,3 +77,8 @@ metadata/_aseprite_wizard_source_file_hash_ = "cae547cf3b319161bbeaaee02cab65e8"
 libraries = {
 "": SubResource("AnimationLibrary_dw7yn")
 }
+
+[node name="MousePos" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MousePos"]
+shape = SubResource("RectangleShape2D_gfpsm")

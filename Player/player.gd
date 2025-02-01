@@ -13,7 +13,6 @@ var mass : float = 3
 @export_subgroup("Visuals")
 @export var animator : AnimationPlayer
 
-
 func _process(_delta) -> void:
 
 	direction = Input.get_vector("left", "right", "up", "down")
