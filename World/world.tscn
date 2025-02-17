@@ -1,8 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://d158vnru4o822"]
+[gd_scene load_steps=4 format=3 uid="uid://d158vnru4o822"]
 
 [ext_resource type="PackedScene" uid="uid://r1rcdcocn5hc" path="res://Player/player.tscn" id="1_4v28w"]
+[ext_resource type="PackedScene" uid="uid://l1cil2p7q5eh" path="res://Camera/Camera.tscn" id="2_ismrf"]
+[ext_resource type="Texture2D" uid="uid://bujl8r2dulhlp" path="res://Art/icon.svg" id="3_omi1g"]
 
 [node name="World" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_4v28w")]
 position = Vector2(314, 223)
+
+[node name="Camera" parent="." node_paths=PackedStringArray("offsetLabel") instance=ExtResource("2_ismrf")]
+offsetLabel = NodePath("Label")
+
+[node name="Label" type="Label" parent="Camera"]
+offset_left = 297.0
+offset_top = 100.0
+offset_right = 337.0
+offset_bottom = 123.0
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(143, 189)
+texture = ExtResource("3_omi1g")

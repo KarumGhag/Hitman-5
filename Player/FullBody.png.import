@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cr7tgrjpglevt"
-path="res://.godot/imported/AgentBrown.png-a61a8b4441bfe0af26fb3bbe70781c60.ctex"
+uid="uid://qd7jef7u6fne"
+path="res://.godot/imported/FullBody.png-7ecb12a09c2cb260cca53d9431ff9d98.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/AgentBrown.png"
-dest_files=["res://.godot/imported/AgentBrown.png-a61a8b4441bfe0af26fb3bbe70781c60.ctex"]
+source_file="res://Player/FullBody.png"
+dest_files=["res://.godot/imported/FullBody.png-7ecb12a09c2cb260cca53d9431ff9d98.ctex"]
 
 [params]
 

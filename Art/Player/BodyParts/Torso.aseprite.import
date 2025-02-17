@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://doreml5vjsj2t"
+path="res://.godot/imported/Torso.aseprite-154989746052322f3d773eae03325c82.res"
+
+[deps]
+
+source_file="res://Art/Player/BodyParts/Torso.aseprite"
+dest_files=["res://.godot/imported/Torso.aseprite-154989746052322f3d773eae03325c82.res"]
+
+[params]
+

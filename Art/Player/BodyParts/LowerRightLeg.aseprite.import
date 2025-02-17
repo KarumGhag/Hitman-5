@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://c5holq51ixog6"
+path="res://.godot/imported/LowerRightLeg.aseprite-98da39fcddfe80262d80e17f444c52b7.res"
+
+[deps]
+
+source_file="res://Art/Player/BodyParts/LowerRightLeg.aseprite"
+dest_files=["res://.godot/imported/LowerRightLeg.aseprite-98da39fcddfe80262d80e17f444c52b7.res"]
+
+[params]
+

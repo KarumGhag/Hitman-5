@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8s7qvbl3xoqy"
-path="res://.godot/imported/AgentBrown2.png-5882814e563180b235800353a34f7935.ctex"
+uid="uid://cuyvbjau28i5q"
+path="res://.godot/imported/Head.png-294249ccab35b7a6955633d23985ef5e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/AgentBrown2.png"
-dest_files=["res://.godot/imported/AgentBrown2.png-5882814e563180b235800353a34f7935.ctex"]
+source_file="res://Player/Head.png"
+dest_files=["res://.godot/imported/Head.png-294249ccab35b7a6955633d23985ef5e.ctex"]
 
 [params]
 

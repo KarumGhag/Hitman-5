@@ -13,6 +13,10 @@ var mass : float = 3
 @export_subgroup("Visuals")
 @export var animator : AnimationPlayer
 
+@export_subgroup("Bones")
+@export var rightArm : Bone2D
+@export var leftArm : Bone2D
+
 func _process(_delta) -> void:
 
 	direction = Input.get_vector("left", "right", "up", "down")
@@ -23,10 +27,7 @@ func _process(_delta) -> void:
 
 	velocity += steering * accel
 
-	if direction:
-		animator.play("Walk")
-	else:
-		animator.play("Idle")
 
+	rightArm.look_at(get_global_mouse_position())
 
 	move_and_slide()

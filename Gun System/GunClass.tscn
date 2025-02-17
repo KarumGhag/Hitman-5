@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bktoq8sexfyey"]
+
+[ext_resource type="Script" path="res://Gun System/GunClass.gd" id="1_its6t"]
+
+[node name="GunClass" type="Node2D"]
+script = ExtResource("1_its6t")

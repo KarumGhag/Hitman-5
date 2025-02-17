@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://c7fy5qavvbfmd"
+path="res://.godot/imported/FullBody.aseprite-a3be89d16b3e6eeb4727587a19dc54d6.res"
+
+[deps]
+
+source_file="res://Art/Player/FullBody.aseprite"
+dest_files=["res://.godot/imported/FullBody.aseprite-a3be89d16b3e6eeb4727587a19dc54d6.res"]
+
+[params]
+
