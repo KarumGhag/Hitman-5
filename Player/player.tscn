@@ -1,7 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://r1rcdcocn5hc"]
+[gd_scene load_steps=21 format=3 uid="uid://r1rcdcocn5hc"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_bvebw"]
-[ext_resource type="Texture2D" uid="uid://qd7jef7u6fne" path="res://Player/FullBody.png" id="2_fp6ab"]
 [ext_resource type="Texture2D" uid="uid://cuyvbjau28i5q" path="res://Player/Head.png" id="3_fllh3"]
 [ext_resource type="Texture2D" uid="uid://bu8wb212j4cc8" path="res://Player/LowerRightArm.png" id="4_0v546"]
 [ext_resource type="Texture2D" uid="uid://nc8ympy07ik4" path="res://Player/Torso.png" id="4_mm8v4"]
@@ -12,46 +11,123 @@
 [ext_resource type="Texture2D" uid="uid://07kebmh21mln" path="res://Player/LowerLeftArm.png" id="6_tj20q"]
 [ext_resource type="Texture2D" uid="uid://tptaxux3v16w" path="res://Player/RightArm.png" id="7_f0l4n"]
 [ext_resource type="Texture2D" uid="uid://cxlag2l8b0sc4" path="res://Player/LeftLeg.png" id="9_v4xx4"]
+[ext_resource type="Texture2D" uid="uid://bh2iu0xsy51ok" path="res://Player/Sprite-0001.png" id="12_60wcm"]
 
-[sub_resource type="Animation" id="Animation_g3w41"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gfpsm"]
+size = Vector2(5, 5)
+
+[sub_resource type="Animation" id="Animation_dkn3i"]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite/BodySkeleton/Torso/LeftLeg:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterSprite/BodySkeleton/Torso/RightLeg:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_gu7bp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite/BodySkeleton/Torso/LeftLeg:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterSprite/BodySkeleton/Torso/RightLeg:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_nwx13"]
+resource_name = "Walk"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite/BodySkeleton/Torso/LeftLeg:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.533333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.541052, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterSprite/BodySkeleton/Torso/RightLeg:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -0.541052]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8e0vi"]
+_data = {
+"Idle": SubResource("Animation_dkn3i"),
+"RESET": SubResource("Animation_gu7bp"),
+"Walk": SubResource("Animation_nwx13")
+}
+
+[sub_resource type="Animation" id="Animation_c65fl"]
 length = 0.2
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0, 0]
+"values": [1, 2]
 }
 
-[sub_resource type="Animation" id="Animation_asv7t"]
-length = 0.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [1, 2, 3, 4, 1, 2, 3, 4]
-}
-
-[sub_resource type="Animation" id="Animation_jvh0s"]
+[sub_resource type="Animation" id="Animation_n00ok"]
 length = 0.1
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
@@ -60,75 +136,35 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CharacterSprite/BodyParts/Head:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = false
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_dw7yn"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ehkhh"]
 _data = {
-"Idle": SubResource("Animation_g3w41"),
-"Walk": SubResource("Animation_asv7t"),
-"default": SubResource("Animation_jvh0s")
+"FrontWalk": SubResource("Animation_c65fl"),
+"Idle": SubResource("Animation_n00ok")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gfpsm"]
-size = Vector2(5, 5)
-
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animator", "rightArm") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animator", "otherAnimator", "skeleton", "rightArm", "debugText") groups=["Player"]]
 script = ExtResource("1_bvebw")
 accel = 0.25
 animator = NodePath("AnimationPlayer")
+otherAnimator = NodePath("OtherSprite/AnimationPlayer")
+skeleton = NodePath("CharacterSprite/BodySkeleton")
 rightArm = NodePath("CharacterSprite/BodySkeleton/Torso/RightArm")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-texture_filter = 1
-position = Vector2(-4.17233e-07, 0)
-scale = Vector2(2, 2)
-texture = ExtResource("2_fp6ab")
-metadata/_aseprite_wizard_interface_config_ = {
-"pending_changes": {}
-}
-metadata/_aseprite_wizard_config_ = {
-"i_mode": 1,
-"keep_anim_length": false,
-"layers": [],
-"o_ex_p": "",
-"o_folder": "",
-"o_name": "",
-"only_visible": false,
-"player": "AnimationPlayer",
-"slice": "",
-"source": "res://Art/Player/FullBody.aseprite"
-}
-metadata/_aseprite_wizard_source_file_hash_ = "7c6e25414405bfd4ec518e142d54a405"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_dw7yn")
-}
+debugText = NodePath("Debug")
 
 [node name="MousePos" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MousePos"]
 shape = SubResource("RectangleShape2D_gfpsm")
 
-[node name="CharacterSprite" type="Node2D" parent="."]
+[node name="CharacterSprite" type="Sprite2D" parent="."]
+visible = false
 
 [node name="BodyParts" type="Node2D" parent="CharacterSprite"]
 
 [node name="RightArm" type="Sprite2D" parent="CharacterSprite/BodyParts"]
 texture_filter = 1
-position = Vector2(17, -30)
+position = Vector2(16, -28)
 rotation = 0.00872852
 scale = Vector2(2, 2)
 texture = ExtResource("7_f0l4n")
@@ -151,7 +187,7 @@ metadata/_aseprite_wizard_source_file_hash_ = "5dc30452f1652918c558d1170ea29f59"
 
 [node name="LowerRightArm" type="Sprite2D" parent="CharacterSprite/BodyParts"]
 texture_filter = 1
-position = Vector2(50.9222, -29.9696)
+position = Vector2(49.9222, -27.9696)
 rotation = 0.0168395
 scale = Vector2(2, 2)
 texture = ExtResource("4_0v546")
@@ -174,7 +210,7 @@ metadata/_aseprite_wizard_source_file_hash_ = "18bb90353770b82ce5c4f815ecab058e"
 
 [node name="RightLeg" type="Sprite2D" parent="CharacterSprite/BodyParts"]
 texture_filter = 1
-position = Vector2(8, 42)
+position = Vector2(9, 41)
 scale = Vector2(2, 2)
 texture = ExtResource("5_v7t87")
 metadata/_aseprite_wizard_interface_config_ = {
@@ -196,7 +232,7 @@ metadata/_aseprite_wizard_source_file_hash_ = "a77cd98dc98ae317ad32232e54fedb3e"
 
 [node name="LowerRightLeg" type="Sprite2D" parent="CharacterSprite/BodyParts"]
 texture_filter = 1
-position = Vector2(7, 68)
+position = Vector2(8, 67)
 scale = Vector2(2, 2)
 texture = ExtResource("6_705wq")
 metadata/_aseprite_wizard_interface_config_ = {
@@ -218,7 +254,7 @@ metadata/_aseprite_wizard_source_file_hash_ = "bb634e07361b22ee76ffc35b52d9107e"
 
 [node name="Torso" type="Sprite2D" parent="CharacterSprite/BodyParts"]
 texture_filter = 1
-position = Vector2(-5, 1)
+position = Vector2(0, -5)
 scale = Vector2(2, 2)
 texture = ExtResource("4_mm8v4")
 metadata/_aseprite_wizard_interface_config_ = {
@@ -240,7 +276,7 @@ metadata/_aseprite_wizard_source_file_hash_ = "0218f6fa7e1c2c4aa31db86587c546d7"
 
 [node name="LeftLeg" type="Sprite2D" parent="CharacterSprite/BodyParts"]
 texture_filter = 1
-position = Vector2(-13, 43)
+position = Vector2(-10, 42)
 scale = Vector2(2, 2)
 texture = ExtResource("9_v4xx4")
 metadata/_aseprite_wizard_interface_config_ = {
@@ -262,7 +298,7 @@ metadata/_aseprite_wizard_source_file_hash_ = "09189b672c46ba14a71c2d41d28271c3"
 
 [node name="LowerLeftLeg" type="Sprite2D" parent="CharacterSprite/BodyParts"]
 texture_filter = 1
-position = Vector2(-13, 69)
+position = Vector2(-10, 68)
 scale = Vector2(2, 2)
 texture = ExtResource("6_4ut4q")
 metadata/_aseprite_wizard_interface_config_ = {
@@ -284,7 +320,7 @@ metadata/_aseprite_wizard_source_file_hash_ = "9c5cae06141145662fc743f0d3398e6e"
 
 [node name="Head" type="Sprite2D" parent="CharacterSprite/BodyParts"]
 texture_filter = 1
-position = Vector2(-2, -63)
+position = Vector2(9.32296e-05, -67)
 scale = Vector2(2, 2)
 texture = ExtResource("3_fllh3")
 metadata/_aseprite_wizard_interface_config_ = {
@@ -306,7 +342,7 @@ metadata/_aseprite_wizard_source_file_hash_ = "0eca33660ac1b78485d7004149e49f23"
 
 [node name="LeftArm" type="Sprite2D" parent="CharacterSprite/BodyParts"]
 texture_filter = 1
-position = Vector2(-25, -29)
+position = Vector2(-26, -27)
 rotation = -3.12921
 scale = Vector2(2, 2)
 texture = ExtResource("5_pjj8h")
@@ -329,7 +365,7 @@ metadata/_aseprite_wizard_source_file_hash_ = "4f71d5ddb6146470fe65e51773f854a1"
 
 [node name="LowerLeftArm" type="Sprite2D" parent="CharacterSprite/BodyParts"]
 texture_filter = 1
-position = Vector2(-56.7276, -29.9983)
+position = Vector2(-57.7275, -27.9983)
 rotation = -3.12921
 scale = Vector2(2, 2)
 texture = ExtResource("6_tj20q")
@@ -351,6 +387,7 @@ metadata/_aseprite_wizard_config_ = {
 metadata/_aseprite_wizard_source_file_hash_ = "07c6eaf86f20f6e3adb86817251b1d2e"
 
 [node name="BodySkeleton" type="Skeleton2D" parent="CharacterSprite"]
+position = Vector2(-1, 2)
 
 [node name="Torso" type="Bone2D" parent="CharacterSprite/BodySkeleton"]
 position = Vector2(1, -7)
@@ -360,8 +397,8 @@ length = 44.417
 bone_angle = 90.0
 
 [node name="LeftLeg" type="Bone2D" parent="CharacterSprite/BodySkeleton/Torso"]
-position = Vector2(-15, 40)
-rest = Transform2D(1, 0, 0, 1, -15, 40)
+position = Vector2(-11, 37)
+rest = Transform2D(1, 0, 0, 1, -11, 37)
 auto_calculate_length_and_angle = false
 length = 25.473
 bone_angle = 90.0
@@ -384,8 +421,8 @@ scale = Vector2(2, 2)
 remote_path = NodePath("../../../../BodyParts/LeftLeg")
 
 [node name="RightLeg" type="Bone2D" parent="CharacterSprite/BodySkeleton/Torso"]
-position = Vector2(7, 41)
-rest = Transform2D(1, 0, 0, 1, 7, 41)
+position = Vector2(9, 38)
+rest = Transform2D(1, 0, 0, 1, 9, 38)
 auto_calculate_length_and_angle = false
 length = 34.0147
 bone_angle = 91.6847
@@ -409,7 +446,7 @@ remote_path = NodePath("../../../../BodyParts/RightLeg")
 [node name="RightArm" type="Bone2D" parent="CharacterSprite/BodySkeleton/Torso"]
 position = Vector2(16, -23)
 rotation = 0.00872852
-rest = Transform2D(0.999999, 0.00133051, -0.00133051, 0.999999, 16, -23)
+rest = Transform2D(0.999962, 0.00872841, -0.00872841, 0.999962, 16, -23)
 auto_calculate_length_and_angle = false
 length = 37.0
 bone_angle = 0.0
@@ -417,7 +454,7 @@ bone_angle = 0.0
 [node name="LowerRightArm" type="Bone2D" parent="CharacterSprite/BodySkeleton/Torso/RightArm"]
 position = Vector2(33.9987, -0.296764)
 rotation = 0.00811101
-rest = Transform2D(0.999967, 0.00811092, -0.00811092, 0.999967, 0.0492287, 37)
+rest = Transform2D(0.999967, 0.00811092, -0.00811092, 0.999967, 33.9987, -0.296764)
 auto_calculate_length_and_angle = false
 length = 40.0
 bone_angle = 0.0
@@ -437,14 +474,14 @@ remote_path = NodePath("../../../../BodyParts/RightArm")
 [node name="LeftArm" type="Bone2D" parent="CharacterSprite/BodySkeleton/Torso"]
 position = Vector2(-26, -22)
 rotation = -3.12921
-rest = Transform2D(1, 0, 0, 1, -26, -22)
+rest = Transform2D(-0.999923, -0.0123823, 0.0123823, -0.999923, -26, -22)
 auto_calculate_length_and_angle = false
 length = 16.0
 bone_angle = 90.0
 
 [node name="LowerLeftArm" type="Bone2D" parent="CharacterSprite/BodySkeleton/Torso/LeftArm"]
 position = Vector2(32.0099, 0.603651)
-rest = Transform2D(1, 0, 0, 1, 0, 36)
+rest = Transform2D(1, 0, 0, 1, 32.0099, 0.603651)
 auto_calculate_length_and_angle = false
 length = 40.0
 bone_angle = 0.0
@@ -461,3 +498,64 @@ rotation = 0.00549212
 [node name="LeftArmTrans" type="RemoteTransform2D" parent="CharacterSprite/BodySkeleton/Torso/LeftArm"]
 scale = Vector2(2, 2)
 remote_path = NodePath("../../../../BodyParts/LeftArm")
+
+[node name="TorsoTransform" type="RemoteTransform2D" parent="CharacterSprite/BodySkeleton/Torso"]
+scale = Vector2(2, 2)
+remote_path = NodePath("../../../BodyParts/Torso")
+
+[node name="Head" type="Bone2D" parent="CharacterSprite/BodySkeleton/Torso"]
+position = Vector2(0, -39)
+rotation = -1.57079
+rest = Transform2D(6.27438e-06, -1, 1, 6.27438e-06, 0, -39)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 0.0
+
+[node name="Head" type="RemoteTransform2D" parent="CharacterSprite/BodySkeleton/Torso/Head"]
+position = Vector2(23, -5.10812e-05)
+rotation = 1.57079
+scale = Vector2(2, 2)
+remote_path = NodePath("../../../../BodyParts/Head")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8e0vi")
+}
+
+[node name="OtherSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("12_60wcm")
+hframes = 2
+vframes = 2
+frame = 2
+metadata/_aseprite_wizard_interface_config_ = {
+"output_section": false,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "OtherSprite/AnimationPlayer",
+"slice": "",
+"source": "res://Player/Sprite-0001.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "0656d253f6b5fea0499a8036f55c7097"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="OtherSprite"]
+libraries = {
+"": SubResource("AnimationLibrary_ehkhh")
+}
+speed_scale = 0.5
+
+[node name="Debug" type="Label" parent="."]
+offset_left = -177.0
+offset_top = -112.0
+offset_right = -137.0
+offset_bottom = -89.0
+text = "Direction"
