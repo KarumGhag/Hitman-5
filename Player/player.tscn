@@ -554,8 +554,8 @@ libraries = {
 speed_scale = 0.5
 
 [node name="Debug" type="Label" parent="."]
-offset_left = -177.0
-offset_top = -112.0
-offset_right = -137.0
-offset_bottom = -89.0
+offset_left = -534.0
+offset_top = -227.0
+offset_right = -463.0
+offset_bottom = -204.0
 text = "Direction"

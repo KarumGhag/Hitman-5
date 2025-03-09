@@ -22,22 +22,21 @@ var steering : Vector2
 @export var leftArm : Bone2D
 
 #Getting direction to face
-enum facing {
-	LEFT,
-	RIGHT,
-	UP,
-	DOWN
-}
+var facing : Array[String] = ["Right", "Left", "Up", "Down", "BotRight", "BotLeft", "TopRight", "TopLeft"]
 
-var currentFacing : facing
-var directionVectors : Array[Vector2] = [Vector2.RIGHT, Vector2.LEFT, Vector2.UP, Vector2.DOWN]
-var dotProducts : Array[float] = [0, 0, 0, 0]
+var currentFacing : String
+var directionVectors : Array[Vector2] = [Vector2.RIGHT, Vector2.LEFT, Vector2.UP, Vector2.DOWN, Vector2(1, 1), Vector2(-1, 1), Vector2(1, -1), Vector2(-1, -1)]
+var dotProducts : Array[float] = [0, 0, 0, 0, 0, 0, 0, 0]
 var biggestDotIndex : int
 var directionToMouse : Vector2
 
 
 @export_subgroup("Debug")
 @export var debugText : Label
+
+func _ready() -> void:
+	for i in range(len(directionVectors)):
+		directionVectors[i] = directionVectors[i].normalized()
 
 func _process(_delta) -> void:
 
@@ -75,17 +74,9 @@ func _process(_delta) -> void:
 	
 	biggestDotIndex = getLargest(dotProducts)
 
-	if biggestDotIndex == 0:
-		currentFacing = facing.RIGHT
-	elif biggestDotIndex == 1:
-		currentFacing = facing.LEFT
-	elif biggestDotIndex == 2:
-		currentFacing = facing.UP
-	elif biggestDotIndex == 3:
-		currentFacing = facing.DOWN
+	currentFacing = facing[biggestDotIndex]
 
-
-	debugText.text = "To Mouse: " + str(directionToMouse) + "\nLargest dot: " + str(biggestDotIndex) + "\nDots: " + str(dotProducts) + "\nDirection: " + str(facing.keys()[currentFacing])
+	debugText.text = "To Mouse: " + str(directionToMouse) + "\nLargest dot: " + str(biggestDotIndex) + "\nDots: " + str(dotProducts) + "\nDirection: " + str(currentFacing)
 
 
 
