@@ -143,11 +143,10 @@ _data = {
 "Idle": SubResource("Animation_n00ok")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animator", "otherAnimator", "skeleton", "rightArm", "debugText") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animator", "skeleton", "rightArm", "debugText") groups=["Player"]]
 script = ExtResource("1_bvebw")
 accel = 0.25
 animator = NodePath("AnimationPlayer")
-otherAnimator = NodePath("OtherSprite/AnimationPlayer")
 skeleton = NodePath("CharacterSprite/BodySkeleton")
 rightArm = NodePath("CharacterSprite/BodySkeleton/Torso/RightArm")
 debugText = NodePath("Debug")
@@ -158,7 +157,6 @@ debugText = NodePath("Debug")
 shape = SubResource("RectangleShape2D_gfpsm")
 
 [node name="CharacterSprite" type="Sprite2D" parent="."]
-visible = false
 
 [node name="BodyParts" type="Node2D" parent="CharacterSprite"]
 

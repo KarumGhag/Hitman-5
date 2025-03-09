@@ -14,7 +14,6 @@ var steering : Vector2
 
 @export_subgroup("Visuals")
 @export var animator : AnimationPlayer
-@export var otherAnimator : AnimationPlayer
 
 @export_subgroup("Bones")
 @export var skeleton : Skeleton2D
@@ -54,19 +53,11 @@ func _process(_delta) -> void:
 	rightArm.look_at(get_global_mouse_position())
 
 	if direction:
-		animator.play("Walk")
-		otherAnimator.play("FrontWalk")
+		animator.play("FrontWalk")
 		
 	else:
 		animator.play("Idle")
-		otherAnimator.play("Idle")
 	
-
-	if get_global_mouse_position().x < global_position.x:
-		skeleton.scale.x = -1
-	else:
-		skeleton.scale.x = 1
-
 
 	directionToMouse = (global_position.direction_to(mousePosition)).normalized()
 	for i in range(len(dotProducts)):
