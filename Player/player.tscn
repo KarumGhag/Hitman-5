@@ -119,7 +119,7 @@ metadata/_aseprite_wizard_config_ = {
 "slice": "",
 "source": "res://Art/Player/Player.aseprite"
 }
-metadata/_aseprite_wizard_source_file_hash_ = "46f3157d2ed612ced0334d903d55914c"
+metadata/_aseprite_wizard_source_file_hash_ = "54ec901cd50a454acde9dde2e262bc62"
 
 [node name="BodyAnim" type="AnimationPlayer" parent="PlayerBody"]
 libraries = {
@@ -149,7 +149,7 @@ metadata/_aseprite_wizard_config_ = {
 "slice": "",
 "source": "res://Art/Player/PlayerHead.aseprite"
 }
-metadata/_aseprite_wizard_source_file_hash_ = "c0fd9afa111106dcece1829306c1abbf"
+metadata/_aseprite_wizard_source_file_hash_ = "ffc18d149e3add8ab7b87337fb1e44d1"
 
 [node name="HeadAnim" type="AnimationPlayer" parent="HeadSprite"]
 libraries = {
