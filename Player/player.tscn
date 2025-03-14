@@ -1,27 +1,11 @@
 [gd_scene load_steps=11 format=3 uid="uid://r1rcdcocn5hc"]
 
-[ext_resource type="Script" path="res://Player/player.gd" id="1_bvebw"]
+[ext_resource type="Script" uid="uid://ckxvqgoqxt3hh" path="res://Player/player.gd" id="1_bvebw"]
 [ext_resource type="Texture2D" uid="uid://d3ttw7pny6au8" path="res://Player/Player.png" id="2_5l58u"]
 [ext_resource type="Texture2D" uid="uid://bi1m84u5rnjuw" path="res://Player/PlayerHead.png" id="2_7wdtj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gfpsm"]
 size = Vector2(5, 5)
-
-[sub_resource type="Animation" id="Animation_1ej70"]
-length = 0.2
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [1, 2]
-}
 
 [sub_resource type="Animation" id="Animation_e3rop"]
 length = 0.1
@@ -39,14 +23,8 @@ tracks/0/keys = {
 "values": [0]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ehkhh"]
-_data = {
-"Idle": SubResource("Animation_e3rop"),
-"Walk": SubResource("Animation_1ej70")
-}
-
-[sub_resource type="Animation" id="Animation_6cbwg"]
-length = 0.1
+[sub_resource type="Animation" id="Animation_1ej70"]
+length = 0.2
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -55,10 +33,16 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0]
+"values": [1, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ehkhh"]
+_data = {
+&"Idle": SubResource("Animation_e3rop"),
+&"Walk": SubResource("Animation_1ej70")
 }
 
 [sub_resource type="Animation" id="Animation_6mcyh"]
@@ -77,13 +61,30 @@ tracks/0/keys = {
 "values": [1]
 }
 
+[sub_resource type="Animation" id="Animation_6cbwg"]
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nwyql"]
 _data = {
-"Front": SubResource("Animation_6mcyh"),
-"Side": SubResource("Animation_6cbwg")
+&"Front": SubResource("Animation_6mcyh"),
+&"Side": SubResource("Animation_6cbwg")
 }
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("bodyAnimator", "headAnimator", "bodySprite", "headSprite", "debugText") groups=["Player"]]
+position = Vector2(0, -26)
 script = ExtResource("1_bvebw")
 accel = 0.25
 bodyAnimator = NodePath("PlayerBody/BodyAnim")
@@ -99,7 +100,7 @@ shape = SubResource("RectangleShape2D_gfpsm")
 
 [node name="PlayerBody" type="Sprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(4, 4)
+scale = Vector2(3, 3)
 texture = ExtResource("2_5l58u")
 hframes = 2
 vframes = 2
@@ -119,18 +120,18 @@ metadata/_aseprite_wizard_config_ = {
 "slice": "",
 "source": "res://Art/Player/Player.aseprite"
 }
-metadata/_aseprite_wizard_source_file_hash_ = "54ec901cd50a454acde9dde2e262bc62"
+metadata/_aseprite_wizard_source_file_hash_ = "e6aa862419806b5f506eb2e811f74d38"
 
 [node name="BodyAnim" type="AnimationPlayer" parent="PlayerBody"]
 libraries = {
-"": SubResource("AnimationLibrary_ehkhh")
+&"": SubResource("AnimationLibrary_ehkhh")
 }
 speed_scale = 0.5
 
 [node name="HeadSprite" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(0, -20)
-scale = Vector2(4, 4)
+position = Vector2(0, -15)
+scale = Vector2(3, 3)
 texture = ExtResource("2_7wdtj")
 hframes = 2
 frame = 1
@@ -153,7 +154,7 @@ metadata/_aseprite_wizard_source_file_hash_ = "ffc18d149e3add8ab7b87337fb1e44d1"
 
 [node name="HeadAnim" type="AnimationPlayer" parent="HeadSprite"]
 libraries = {
-"": SubResource("AnimationLibrary_nwyql")
+&"": SubResource("AnimationLibrary_nwyql")
 }
 
 [node name="Debug" type="Label" parent="."]

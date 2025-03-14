@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cdsnrhu42fxk4"
+path="res://.godot/imported/Glock.aseprite-b8e694e59282963b3781eadc124efcc4.res"
+
+[deps]
+
+source_file="res://Art/Guns/Glock.aseprite"
+dest_files=["res://.godot/imported/Glock.aseprite-b8e694e59282963b3781eadc124efcc4.res"]
+
+[params]
+
