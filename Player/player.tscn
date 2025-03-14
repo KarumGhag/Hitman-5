@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://r1rcdcocn5hc"]
+[gd_scene load_steps=13 format=3 uid="uid://r1rcdcocn5hc"]
 
 [ext_resource type="Script" uid="uid://ckxvqgoqxt3hh" path="res://Player/player.gd" id="1_bvebw"]
 [ext_resource type="Texture2D" uid="uid://d3ttw7pny6au8" path="res://Player/Player.png" id="2_5l58u"]
 [ext_resource type="Texture2D" uid="uid://bi1m84u5rnjuw" path="res://Player/PlayerHead.png" id="2_7wdtj"]
+[ext_resource type="Script" uid="uid://cwij3kfbw3nga" path="res://Inventory/PlayerInv.gd" id="4_gwnis"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gfpsm"]
 size = Vector2(5, 5)
@@ -83,7 +84,11 @@ _data = {
 &"Side": SubResource("Animation_6cbwg")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("bodyAnimator", "headAnimator", "bodySprite", "headSprite", "debugText") groups=["Player"]]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_btcbx"]
+radius = 16.0
+height = 76.0
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("bodyAnimator", "headAnimator", "bodySprite", "headSprite", "holdNode", "inventory", "debugText") groups=["Player"]]
 position = Vector2(0, -26)
 script = ExtResource("1_bvebw")
 accel = 0.25
@@ -91,6 +96,8 @@ bodyAnimator = NodePath("PlayerBody/BodyAnim")
 headAnimator = NodePath("HeadSprite/HeadAnim")
 bodySprite = NodePath("PlayerBody")
 headSprite = NodePath("HeadSprite")
+holdNode = NodePath("HoldPos")
+inventory = NodePath("Inventory")
 debugText = NodePath("Debug")
 
 [node name="MousePos" type="Area2D" parent="."]
@@ -157,9 +164,19 @@ libraries = {
 &"": SubResource("AnimationLibrary_nwyql")
 }
 
+[node name="Collider" type="CollisionShape2D" parent="."]
+position = Vector2(0, 7)
+shape = SubResource("CapsuleShape2D_btcbx")
+
 [node name="Debug" type="Label" parent="."]
 offset_left = -534.0
 offset_top = -227.0
 offset_right = -463.0
 offset_bottom = -204.0
 text = "Direction"
+
+[node name="Inventory" type="Node2D" parent="."]
+script = ExtResource("4_gwnis")
+
+[node name="HoldPos" type="Node2D" parent="."]
+position = Vector2(21, 18)

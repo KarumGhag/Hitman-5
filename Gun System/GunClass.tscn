@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bktoq8sexfyey"]
+[gd_scene load_steps=8 format=3 uid="uid://bktoq8sexfyey"]
 
 [ext_resource type="Script" uid="uid://dgsixfqekfio2" path="res://Gun System/GunClass.gd" id="1_its6t"]
 [ext_resource type="Texture2D" uid="uid://dikvptutl5iig" path="res://Gun System/Glock.png" id="2_f1gvl"]
@@ -21,6 +21,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_blotc"]
 length = 0.7
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -40,8 +41,17 @@ _data = {
 &"Pump": SubResource("Animation_blotc")
 }
 
-[node name="GunClass" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_rj1wu"]
+radius = 149.121
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_thvgv"]
+radius = 50.4207
+
+[node name="GunClass" type="Node2D" node_paths=PackedStringArray("pickUpArea", "pickUpBox")]
 script = ExtResource("1_its6t")
+itemName = "Glock"
+pickUpArea = NodePath("PickUpArea")
+pickUpBox = NodePath("PickUpBox")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -51,7 +61,6 @@ speed_scale = 2.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(21, -11)
 texture = ExtResource("2_f1gvl")
 hframes = 3
 vframes = 2
@@ -71,3 +80,14 @@ metadata/_aseprite_wizard_config_ = {
 "source": "res://Art/Guns/Glock.aseprite"
 }
 metadata/_aseprite_wizard_source_file_hash_ = "29d4e4d221828b30f4085f286684e4bd"
+
+[node name="PickUpArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickUpArea"]
+shape = SubResource("CircleShape2D_rj1wu")
+
+[node name="PickUpBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickUpBox"]
+position = Vector2(1, 1.5)
+shape = SubResource("CircleShape2D_thvgv")

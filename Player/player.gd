@@ -19,6 +19,11 @@ var steering : Vector2
 @export var headSprite : Sprite2D
 
 
+@export_subgroup("Inventory")
+@export var holdNode : Node2D
+var holdPos : Vector2 = holdNode.global_position
+@export var inventory : PlayerInv
+
 #Getting direction to face
 var facing : Array[String] = ["Right", "Left", "Up", "Down", "BotRight", "BotLeft", "TopRight", "TopLeft"]
 
@@ -38,6 +43,8 @@ func _ready() -> void:
 		directionVectors[i] = directionVectors[i].normalized()
 
 func _process(_delta) -> void:
+	holdPos = holdNode.global_position	
+
 
 	mousePosition = get_global_mouse_position()
 
