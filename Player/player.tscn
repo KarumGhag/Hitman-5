@@ -85,10 +85,10 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_btcbx"]
-radius = 16.0
-height = 76.0
+radius = 15.0
+height = 80.0
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("bodyAnimator", "headAnimator", "bodySprite", "headSprite", "holdNode", "inventory", "debugText") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("bodyAnimator", "headAnimator", "bodySprite", "headSprite", "holdFlipper", "holdNode", "inventory", "debugText") groups=["Player"]]
 position = Vector2(0, -26)
 script = ExtResource("1_bvebw")
 accel = 0.25
@@ -96,7 +96,8 @@ bodyAnimator = NodePath("PlayerBody/BodyAnim")
 headAnimator = NodePath("HeadSprite/HeadAnim")
 bodySprite = NodePath("PlayerBody")
 headSprite = NodePath("HeadSprite")
-holdNode = NodePath("HoldPos")
+holdFlipper = NodePath("HoldFlip")
+holdNode = NodePath("HoldFlip/HoldPos")
 inventory = NodePath("Inventory")
 debugText = NodePath("Debug")
 
@@ -178,5 +179,8 @@ text = "Direction"
 [node name="Inventory" type="Node2D" parent="."]
 script = ExtResource("4_gwnis")
 
-[node name="HoldPos" type="Node2D" parent="."]
-position = Vector2(21, 18)
+[node name="HoldFlip" type="Node2D" parent="."]
+position = Vector2(0, 12)
+
+[node name="HoldPos" type="Node2D" parent="HoldFlip"]
+position = Vector2(33, 0)

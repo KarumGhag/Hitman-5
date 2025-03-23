@@ -20,9 +20,11 @@ var steering : Vector2
 
 
 @export_subgroup("Inventory")
+@export var holdFlipper : Node2D
 @export var holdNode : Node2D
-var holdPos : Vector2 = holdNode.global_position
+var holdPos : Vector2
 @export var inventory : PlayerInv
+var currentItem : Item
 
 #Getting direction to face
 var facing : Array[String] = ["Right", "Left", "Up", "Down", "BotRight", "BotLeft", "TopRight", "TopLeft"]
@@ -44,6 +46,7 @@ func _ready() -> void:
 
 func _process(_delta) -> void:
 	holdPos = holdNode.global_position	
+	currentItem = inventory.currentItem
 
 
 	mousePosition = get_global_mouse_position()
@@ -56,7 +59,8 @@ func _process(_delta) -> void:
 
 	velocity += steering * accel
 
-
+	
+	print(currentItem)
 	
 
 	directionToMouse = (global_position.direction_to(mousePosition)).normalized()
@@ -83,10 +87,15 @@ func _process(_delta) -> void:
 	if currentFacingInt == 1 or currentFacingInt == 7 or currentFacingInt == 5:
 		headSprite.flip_h = true
 		bodySprite.flip_h = true
+		if currentItem != null:
+			currentItem.itemSprite.flip_h = true
+		holdFlipper.rotation_degrees = 180
 	else:
 		headSprite.flip_h = false
 		bodySprite.flip_h = false
-
+		if currentItem != null:
+			currentItem.itemSprite.flip_h = false
+		holdFlipper.rotation_degrees = 0
 
 	debugText.text = "To Mouse: " + str(directionToMouse) + "\nLargest dot: " + str(biggestDotIndex) + "\nDots: " + str(dotProducts) + "\nDirection: " + str(currentFacing)
 
