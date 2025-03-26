@@ -40,9 +40,12 @@ var fireCoolDownTimer : Timer
 var bulletsLeft : int
 @export var reloadTime : float = 2
 var reloadTimer : Timer
-var canShoot : bool = true
+var isReloading : bool = false
 
+
+var canShoot : bool = true
 var target : Vector2
+
 
 
 @export_subgroup("Camera")
@@ -51,6 +54,7 @@ var target : Vector2
 
 func itemReady() -> void:
 	bulletsLeft = magSize
+	
 
 	#makes a timer that will let you shoot again after its up
 	fireCoolDownTimer = Timer.new()
@@ -66,18 +70,22 @@ func canShootAgain() -> void:
 	canShoot = true
 
 
-func shootLocation() -> Vector2:
+func shootLocation(callerTarget) -> Vector2:
 	var innacuracy = randf_range(-spread, spread)
-	target = Vector2.from_angle(shootVectorPoint.global_position.angle_to_point(get_global_mouse_position()) + innacuracy)
+	target = Vector2.from_angle(shootVectorPoint.global_position.angle_to_point(callerTarget) + innacuracy)
 
 	return target.normalized()
 
 
-func shoot() -> void:
+#caller target needed so that the player can pass in mouse position and enemy can pass in the player, manage the enemy target setting from them and let the spread apply here
+func shoot(callerTarget : Vector2) -> void:
+
 	if bulletsLeft <= 0:
 		reload()
+		return
 
 	if not canShoot:
+		
 		return
 	
 
@@ -91,19 +99,19 @@ func shoot() -> void:
 
 
 			if animationPlayer != null:
-				animationPlayer.play("Shoot")
+				animationPlayer.play("Pump")
 
 
 
 
-			var bulletDirection : Vector2 = shootLocation()
+			var bulletDirection : Vector2 = shootLocation(callerTarget)
 			var bulletInstance = bullet.instantiate()
 			bulletInstance.global_position = shootPoint.global_position
 			bulletInstance.direction = bulletDirection
 
 			bulletInstance.look_at(get_global_mouse_position())
 
-			bulletInstance.fireDistance = fireDistance
+			bulletInstance.fireDist = fireDistance
 			bulletInstance.damage = damage
 			bulletInstance.speed = bulletSpeed
 			bulletInstance.knockback = knockback
@@ -112,11 +120,34 @@ func shoot() -> void:
 
 			get_tree().get_root().add_child(bulletInstance)
 
+			camera.shakeCam(shakeAmount)
+			bulletsLeft -= 1
+
+
+			if shotgun or multiBulletWait == 0:
+				continue
+			
+			if multiBulletNum == 1:
+				break
+
+			await wait(multiBulletWait)
+
+
+	fireCoolDownTimer.start(fireCoolDown)
+
 
 
 func wait(seconds : float) -> void:
 	await get_tree().create_timer(seconds).timeout
 
 func reload() -> void:
+	if isReloading:
+		return
+	
+	isReloading = true
+
 	await wait(reloadTime)
 	bulletsLeft = magSize
+	print("reload, now have: " + str(bulletsLeft) + " bullets")
+
+	isReloading = false

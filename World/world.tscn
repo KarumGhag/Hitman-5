@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://r1rcdcocn5hc" path="res://Player/player.tscn" id="1_4v28w"]
 [ext_resource type="PackedScene" uid="uid://l1cil2p7q5eh" path="res://Camera/Camera.tscn" id="2_ismrf"]
 [ext_resource type="Texture2D" uid="uid://bujl8r2dulhlp" path="res://Art/icon.svg" id="3_omi1g"]
-[ext_resource type="PackedScene" uid="uid://bktoq8sexfyey" path="res://Gun System/GunClass.tscn" id="4_2726p"]
+[ext_resource type="PackedScene" uid="uid://dornoguqrdv12" path="res://Guns/Glock.tscn" id="4_3f78f"]
 
 [node name="World" type="Node2D"]
 position = Vector2(-4, -7)
@@ -24,5 +24,5 @@ offset_bottom = 123.0
 position = Vector2(143, 189)
 texture = ExtResource("3_omi1g")
 
-[node name="GunClass" parent="." instance=ExtResource("4_2726p")]
-position = Vector2(348, 243)
+[node name="Glock" parent="." instance=ExtResource("4_3f78f")]
+position = Vector2(472, 230)

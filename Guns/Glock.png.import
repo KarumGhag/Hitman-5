@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dikvptutl5iig"
-path="res://.godot/imported/Glock.png-45cde646593a1834c8c3c1effd69a506.ctex"
+uid="uid://c5ujuw17k542v"
+path="res://.godot/imported/Glock.png-a8a2abfe4c6d9b51e886c8bb73026fa0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Gun System/Glock.png"
-dest_files=["res://.godot/imported/Glock.png-45cde646593a1834c8c3c1effd69a506.ctex"]
+source_file="res://Guns/Glock.png"
+dest_files=["res://.godot/imported/Glock.png-a8a2abfe4c6d9b51e886c8bb73026fa0.ctex"]
 
 [params]
 

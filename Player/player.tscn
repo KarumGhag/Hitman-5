@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://r1rcdcocn5hc"]
+[gd_scene load_steps=15 format=3 uid="uid://r1rcdcocn5hc"]
 
 [ext_resource type="Script" uid="uid://ckxvqgoqxt3hh" path="res://Player/player.gd" id="1_bvebw"]
 [ext_resource type="Texture2D" uid="uid://d3ttw7pny6au8" path="res://Player/Player.png" id="2_5l58u"]
 [ext_resource type="Texture2D" uid="uid://bi1m84u5rnjuw" path="res://Player/PlayerHead.png" id="2_7wdtj"]
 [ext_resource type="Script" uid="uid://cwij3kfbw3nga" path="res://Inventory/PlayerInv.gd" id="4_gwnis"]
 [ext_resource type="Texture2D" uid="uid://bujl8r2dulhlp" path="res://Art/icon.svg" id="5_k53q1"]
+[ext_resource type="Script" uid="uid://cchqjwlsf03he" path="res://Player/player_shoot.gd" id="6_fhl08"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gfpsm"]
 size = Vector2(5, 5)
@@ -197,3 +198,7 @@ position = Vector2(0, 12)
 [node name="Icon" type="Sprite2D" parent="Holding/Holder"]
 scale = Vector2(0.015625, 0.0195313)
 texture = ExtResource("5_k53q1")
+
+[node name="PlayerShoot" type="Node2D" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("6_fhl08")
+player = NodePath("..")

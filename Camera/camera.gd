@@ -34,12 +34,13 @@ func _process(delta):
 	distanceToMouse = mousePos.distance_to(position)
 
 	#camera leans more when holding an item
-	#if player.inventorySystem.currentItem != null:
-	#	lean = directionToMouse * distanceToMouse * heldLean
-	#else:
-	#	lean = directionToMouse * distanceToMouse * unheldLean
+	if player.currentItem != null:
+		lean = directionToMouse * distanceToMouse * heldLean
+	else:
+		lean = directionToMouse * distanceToMouse * unheldLean
+
 	
-	lean = directionToMouse * distanceToMouse * unheldLean
+	#lean = directionToMouse * distanceToMouse * unheldLean
 
 	offset = lerp(offset, lean, delta * leanSmoothness)
 

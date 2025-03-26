@@ -1,0 +1,104 @@
+[gd_scene load_steps=9 format=3 uid="uid://dornoguqrdv12"]
+
+[ext_resource type="Script" uid="uid://dgsixfqekfio2" path="res://Gun System/GunClass.gd" id="1_8trd8"]
+[ext_resource type="PackedScene" uid="uid://dav0r05sjcywp" path="res://Bullet System/BulletClass.tscn" id="2_iv41w"]
+[ext_resource type="Texture2D" uid="uid://c5ujuw17k542v" path="res://Guns/Glock.png" id="2_s7lk7"]
+
+[sub_resource type="Animation" id="Animation_5yrs8"]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ItemSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_blotc"]
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ItemSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3tl4v"]
+_data = {
+&"Idle": SubResource("Animation_5yrs8"),
+&"Pump": SubResource("Animation_blotc")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rj1wu"]
+radius = 149.121
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_thvgv"]
+radius = 50.4207
+
+[node name="Glock" type="Node2D" node_paths=PackedStringArray("shootPoint", "animationPlayer", "shootVectorPoint", "itemSprite", "pickUpArea", "pickUpBox")]
+script = ExtResource("1_8trd8")
+bullet = ExtResource("2_iv41w")
+shootPoint = NodePath("ShootPoint")
+animationPlayer = NodePath("AnimationPlayer")
+shootVectorPoint = NodePath("ShootVectorPoint")
+bulletSpeed = 1500.0
+itemName = "Glock"
+itemSprite = NodePath("ItemSprite")
+pickUpArea = NodePath("PickUpArea")
+pickUpBox = NodePath("PickUpBox")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_3tl4v")
+}
+speed_scale = 4.0
+
+[node name="PickUpArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickUpArea"]
+shape = SubResource("CircleShape2D_rj1wu")
+
+[node name="PickUpBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickUpBox"]
+position = Vector2(1, 1.5)
+shape = SubResource("CircleShape2D_thvgv")
+
+[node name="ShootPoint" type="Node2D" parent="."]
+position = Vector2(24, -2)
+
+[node name="ShootVectorPoint" type="Node2D" parent="."]
+position = Vector2(-14, -2)
+
+[node name="ItemSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_s7lk7")
+hframes = 3
+vframes = 2
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"i_mode": -1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "AnimationPlayer",
+"slice": "",
+"source": "res://Art/Guns/Glock.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "29d4e4d221828b30f4085f286684e4bd"

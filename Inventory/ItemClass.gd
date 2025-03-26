@@ -28,6 +28,7 @@ func _ready() -> void:
 	if player != null:
 		inv = player.inventory
 
+	itemReady()
 
 func _process(delta) -> void:
 	if equipped:

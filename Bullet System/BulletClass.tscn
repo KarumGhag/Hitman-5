@@ -8,8 +8,9 @@ size = Vector2(28, 26)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a7aql"]
 
-[node name="BulletClass" type="CharacterBody2D"]
+[node name="BulletClass" type="CharacterBody2D" node_paths=PackedStringArray("hitbox")]
 script = ExtResource("1_a7aql")
+hitbox = NodePath("HitBox")
 
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(3.8743e-07, 0)
