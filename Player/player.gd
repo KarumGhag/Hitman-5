@@ -36,16 +36,25 @@ var dotProducts : Array[float] = [0, 0, 0, 0, 0, 0, 0, 0]
 var biggestDotIndex : int
 var directionToMouse : Vector2
 
+@export_subgroup("Holders")
+@export var rightHold : Node2D
+@export var leftHold : Node2D
+@export var holder : Node2D
+
+
+
 
 @export_subgroup("Debug")
 @export var debugText : Label
 
 func _ready() -> void:
+	
+
 	for i in range(len(directionVectors)):
 		directionVectors[i] = directionVectors[i].normalized()
 
 func _process(_delta) -> void:
-	holdPos = holdNode.global_position	
+	#holdPos = holdNode.global_position	
 	currentItem = inventory.currentItem
 
 
@@ -60,7 +69,6 @@ func _process(_delta) -> void:
 	velocity += steering * accel
 
 	
-	print(currentItem)
 	
 
 	directionToMouse = (global_position.direction_to(mousePosition)).normalized()
@@ -87,20 +95,17 @@ func _process(_delta) -> void:
 	if currentFacingInt == 1 or currentFacingInt == 7 or currentFacingInt == 5:
 		headSprite.flip_h = true
 		bodySprite.flip_h = true
-		if currentItem != null:
-			currentItem.itemSprite.flip_h = true
-		holdFlipper.rotation_degrees = 180
 	else:
 		headSprite.flip_h = false
 		bodySprite.flip_h = false
-		if currentItem != null:
-			currentItem.itemSprite.flip_h = false
-		holdFlipper.rotation_degrees = 0
 
-	debugText.text = "To Mouse: " + str(directionToMouse) + "\nLargest dot: " + str(biggestDotIndex) + "\nDots: " + str(dotProducts) + "\nDirection: " + str(currentFacing)
+		
 
+	debugText.text = "To Mouse: " + str(directionToMouse) + "\nLargest dot: " + str(biggestDotIndex) + "\nDots: " + str(dotProducts) + "\nDirection: " + str(currentFacing) + "\nHold: " + str(holdPos)
 
 	move_and_slide()
+
+
 
 
 

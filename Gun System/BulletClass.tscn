@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dav0r05sjcywp"]
+
+[ext_resource type="Script" uid="uid://d228axkvcfoxo" path="res://Gun System/bullet_class.gd" id="1_a7aql"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6dl7u"]
+size = Vector2(28, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a7aql"]
+
+[node name="BulletClass" type="CharacterBody2D"]
+script = ExtResource("1_a7aql")
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("RectangleShape2D_6dl7u")
+
+[node name="CollideBox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_a7aql")

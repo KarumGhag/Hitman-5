@@ -37,21 +37,6 @@ func _process(delta) -> void:
 		hide()
 	else:
 		show()
-		itemSprite.flip_h = false
-		itemSprite.flip_v = false
-	
-	if equipped:
-		mousePos = get_global_mouse_position()
-		if mousePos.x < player.global_position.x:
-			look_at(get_global_mouse_position())
-
-			itemSprite.flip_h = true
-			itemSprite.flip_v = true
-		else:
-			look_at(get_global_mouse_position())
-			
-			itemSprite.flip_h = false
-			itemSprite.flip_v = false
 
 
 	if Input.is_action_just_pressed("pickup"):

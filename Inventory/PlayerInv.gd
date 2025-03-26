@@ -65,6 +65,20 @@ func _process(_delta) -> void:
 		holstered = not holstered #toggles the value
 
 
+
+	if currentItem != null:
+		
+
+		if get_global_mouse_position().x < player.global_position.x:
+			currentItem.global_position = player.leftHold.global_position
+			currentItem.itemSprite.flip_v = true
+		else:
+			currentItem.global_position = player.rightHold.global_position
+			currentItem.itemSprite.flip_v = false
+		
+
+		currentItem.look_at(get_global_mouse_position())
+ 
 func getNext(currentPos) -> int:
 
 	if currentPos == -1:
