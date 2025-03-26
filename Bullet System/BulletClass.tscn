@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dav0r05sjcywp"]
+[gd_scene load_steps=5 format=3 uid="uid://dav0r05sjcywp"]
 
-[ext_resource type="Script" uid="uid://d228axkvcfoxo" path="res://Gun System/bullet_class.gd" id="1_a7aql"]
+[ext_resource type="Script" uid="uid://d228axkvcfoxo" path="res://Bullet System/BulletClass.gd" id="1_a7aql"]
+[ext_resource type="Texture2D" uid="uid://bujl8r2dulhlp" path="res://Art/icon.svg" id="2_6dl7u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6dl7u"]
 size = Vector2(28, 26)
@@ -9,6 +10,11 @@ size = Vector2(28, 26)
 
 [node name="BulletClass" type="CharacterBody2D"]
 script = ExtResource("1_a7aql")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(3.8743e-07, 0)
+scale = Vector2(0.15625, 0.15625)
+texture = ExtResource("2_6dl7u")
 
 [node name="HitBox" type="Area2D" parent="."]
 
