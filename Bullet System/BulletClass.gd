@@ -6,6 +6,7 @@ class_name BulletClass
 var fireDist : float
 var originPoint : Vector2
 var distTravelled : float
+var isPlayer : bool
 
 #stats
 var damage : float
@@ -30,7 +31,7 @@ func hitboxBody(body) -> void:
 	var tempVel : Vector2 = velocity
 	velocity = Vector2.ZERO
 
-	if body is BulletClass:
+	if body is BulletClass or (isPlayer and body is Player):
 		velocity = tempVel
 		return
 	

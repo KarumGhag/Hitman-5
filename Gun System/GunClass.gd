@@ -78,7 +78,7 @@ func shootLocation(callerTarget) -> Vector2:
 
 
 #caller target needed so that the player can pass in mouse position and enemy can pass in the player, manage the enemy target setting from them and let the spread apply here
-func shoot(callerTarget : Vector2) -> void:
+func shoot(callerTarget : Vector2, isPlayer : bool = false) -> void:
 
 	if bulletsLeft <= 0:
 		reload()
@@ -116,7 +116,7 @@ func shoot(callerTarget : Vector2) -> void:
 			bulletInstance.speed = bulletSpeed
 			bulletInstance.knockback = knockback
 
-
+			bulletInstance.isPlayer = isPlayer
 
 			get_tree().get_root().add_child(bulletInstance)
 
