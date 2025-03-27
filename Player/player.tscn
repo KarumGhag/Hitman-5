@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://r1rcdcocn5hc"]
+[gd_scene load_steps=15 format=3 uid="uid://r1rcdcocn5hc"]
 
 [ext_resource type="Script" uid="uid://ckxvqgoqxt3hh" path="res://Player/player.gd" id="1_bvebw"]
 [ext_resource type="Texture2D" uid="uid://d3ttw7pny6au8" path="res://Player/Player.png" id="2_5l58u"]
 [ext_resource type="Texture2D" uid="uid://bi1m84u5rnjuw" path="res://Player/PlayerHead.png" id="2_7wdtj"]
 [ext_resource type="Script" uid="uid://cwij3kfbw3nga" path="res://Inventory/PlayerInv.gd" id="4_gwnis"]
 [ext_resource type="Script" uid="uid://cchqjwlsf03he" path="res://Player/player_shoot.gd" id="6_fhl08"]
+[ext_resource type="Script" uid="uid://d3uec1c82qn8d" path="res://Player/animator.gd" id="6_vtle1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gfpsm"]
 size = Vector2(5, 5)
@@ -194,3 +195,12 @@ position = Vector2(-27, 12)
 [node name="PlayerShoot" type="Node2D" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("6_fhl08")
 player = NodePath("..")
+
+[node name="Animator" type="Node2D" parent="." node_paths=PackedStringArray("player", "debugText", "headSprite", "bodySprite", "bodyAnimator", "headAnimator")]
+script = ExtResource("6_vtle1")
+player = NodePath("..")
+debugText = NodePath("../Debug")
+headSprite = NodePath("../HeadSprite")
+bodySprite = NodePath("../PlayerBody")
+bodyAnimator = NodePath("../PlayerBody/BodyAnim")
+headAnimator = NodePath("../HeadSprite/HeadAnim")

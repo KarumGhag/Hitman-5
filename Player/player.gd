@@ -48,13 +48,9 @@ var directionToMouse : Vector2
 @export var debugText : Label
 
 func _ready() -> void:
-	
-
-	for i in range(len(directionVectors)):
-		directionVectors[i] = directionVectors[i].normalized()
+	pass
 
 func _process(_delta) -> void:
-	#holdPos = holdNode.global_position	
 	currentItem = inventory.currentItem
 
 
@@ -69,39 +65,6 @@ func _process(_delta) -> void:
 	velocity += steering * accel
 
 	
-	
-
-	directionToMouse = (global_position.direction_to(mousePosition)).normalized()
-	for i in range(len(dotProducts)):
-		dotProducts[i] = directionToMouse.dot(directionVectors[i])
-	
-	biggestDotIndex = getLargest(dotProducts)
-
-	currentFacing = facing[biggestDotIndex]
-	currentFacingInt = biggestDotIndex
-
-	if direction:
-		bodyAnimator.play("Walk")
-	else:
-		bodyAnimator.play("Idle")
-
-	#if they arent facing up or down the head looks to the side
-	if currentFacingInt == 2 or currentFacingInt == 3:
-		headAnimator.play("Front")
-	else:
-		headAnimator.play("Side")
-	
-	#this means they are facing left
-	if currentFacingInt == 1 or currentFacingInt == 7 or currentFacingInt == 5:
-		headSprite.flip_h = true
-		bodySprite.flip_h = true
-	else:
-		headSprite.flip_h = false
-		bodySprite.flip_h = false
-
-		
-
-	debugText.text = "To Mouse: " + str(directionToMouse) + "\nLargest dot: " + str(biggestDotIndex) + "\nDots: " + str(dotProducts) + "\nDirection: " + str(currentFacing) + "\nHold: " + str(holdPos)
 
 	move_and_slide()
 
