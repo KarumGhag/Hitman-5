@@ -11,14 +11,6 @@ var direction : Vector2
 var steering : Vector2
 @export var mass : float = 3
 
-
-@export_subgroup("Visuals")
-@export var bodyAnimator : AnimationPlayer
-@export var headAnimator : AnimationPlayer
-@export var bodySprite : Sprite2D
-@export var headSprite : Sprite2D
-
-
 @export_subgroup("Inventory")
 @export var holdFlipper : Node2D
 @export var holdNode : Node2D

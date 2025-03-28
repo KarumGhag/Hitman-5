@@ -90,14 +90,10 @@ _data = {
 radius = 15.0
 height = 80.0
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("bodyAnimator", "headAnimator", "bodySprite", "headSprite", "holdNode", "inventory", "rightHold", "leftHold", "debugText") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("holdNode", "inventory", "rightHold", "leftHold", "debugText") groups=["Player"]]
 position = Vector2(0, -26)
 script = ExtResource("1_bvebw")
 accel = 0.25
-bodyAnimator = NodePath("PlayerBody/BodyAnim")
-headAnimator = NodePath("HeadSprite/HeadAnim")
-bodySprite = NodePath("PlayerBody")
-headSprite = NodePath("HeadSprite")
 holdNode = NodePath("Holding/RightHold")
 inventory = NodePath("Inventory")
 rightHold = NodePath("Holding/RightHold")
