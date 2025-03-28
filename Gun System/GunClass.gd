@@ -85,7 +85,6 @@ func shoot(callerTarget : Vector2, isPlayer : bool = false) -> void:
 		return
 
 	if not canShoot:
-		
 		return
 	
 
@@ -95,6 +94,7 @@ func shoot(callerTarget : Vector2, isPlayer : bool = false) -> void:
 	for i in range(multiBulletNum):
 			if bulletsLeft <= 0:
 				reload()
+				print("broke")
 				break
 
 

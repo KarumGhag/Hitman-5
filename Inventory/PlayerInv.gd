@@ -14,6 +14,8 @@ var holstered : bool = false
 var lastEquipedItem : int
 var tempItem : Item
 
+#for setting items position when dropping
+var currentHoldPos : Vector2
 
 func _ready() -> void:
 	camera = get_tree().get_first_node_in_group("Camera")
@@ -30,16 +32,26 @@ func _ready() -> void:
 
 
 func _process(_delta) -> void:
+
+
 	for i in range(len(inv)):
-		if inv[i] != null:
-			inv[i].global_position = player.holdPos
+		if inv[i] != null and currentHoldPos != null:
+				inv[i].global_position = currentHoldPos
+			
+		
 
 
 	if Input.is_action_just_pressed("nextItem") and not holstered:
+		currentItem.equipped = false
 		currentItem = inv[getNext(getCurrent())]
+		currentItem.equipped = true
 	if Input.is_action_just_pressed("prevItem") and not holstered:
+		currentItem.equipped = false
 		currentItem = inv[getPrev(getCurrent())]
+		currentItem.equipped = true
 
+	if Input.is_action_just_pressed("drop") and currentItem != null:
+		currentItem.drop()
 
 
 #if holstered a temp item is set to the next or prev and then the last equipped item is changed and the current item is re holstered
@@ -76,6 +88,8 @@ func _process(_delta) -> void:
 			currentItem.global_position = player.rightHold.global_position
 			currentItem.itemSprite.flip_v = false
 		
+		
+		currentHoldPos = currentItem.global_position
 
 		currentItem.look_at(get_global_mouse_position())
  

@@ -90,7 +90,7 @@ _data = {
 radius = 15.0
 height = 80.0
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("bodyAnimator", "headAnimator", "bodySprite", "headSprite", "holdFlipper", "holdNode", "inventory", "rightHold", "leftHold", "holder", "debugText") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("bodyAnimator", "headAnimator", "bodySprite", "headSprite", "holdNode", "inventory", "rightHold", "leftHold", "debugText") groups=["Player"]]
 position = Vector2(0, -26)
 script = ExtResource("1_bvebw")
 accel = 0.25
@@ -98,12 +98,10 @@ bodyAnimator = NodePath("PlayerBody/BodyAnim")
 headAnimator = NodePath("HeadSprite/HeadAnim")
 bodySprite = NodePath("PlayerBody")
 headSprite = NodePath("HeadSprite")
-holdFlipper = NodePath("")
 holdNode = NodePath("Holding/RightHold")
 inventory = NodePath("Inventory")
 rightHold = NodePath("Holding/RightHold")
 leftHold = NodePath("Holding/LeftHold")
-holder = NodePath("")
 debugText = NodePath("Debug")
 
 [node name="MousePos" type="Area2D" parent="."]
@@ -198,6 +196,7 @@ player = NodePath("..")
 
 [node name="Animator" type="Node2D" parent="." node_paths=PackedStringArray("player", "debugText", "headSprite", "bodySprite", "bodyAnimator", "headAnimator")]
 script = ExtResource("6_vtle1")
+enabled = true
 player = NodePath("..")
 debugText = NodePath("../Debug")
 headSprite = NodePath("../HeadSprite")

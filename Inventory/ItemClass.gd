@@ -31,13 +31,15 @@ func _ready() -> void:
 	itemReady()
 
 func _process(delta) -> void:
+	#print(global_position)
 	if equipped:
 		itemProcess(delta)
 		show()
 	elif inInv and not equipped:
+		
 		hide()
 	else:
-		show()
+		show()	
 
 
 	if Input.is_action_just_pressed("pickup"):
@@ -53,12 +55,23 @@ func pickup() -> void:
 			inv.inv[i] = self
 			inInv = true
 
+			if inv.currentItem != null:
+				inv.currentItem.equipped = false
+
 			inv.currentItem = inv.inv[i]
 			equipped = true
 
-			
-
 			return
+
+func drop() -> void:
+	
+
+	inInv = false
+	equipped = false
+	inv.currentItem = null
+
+	global_position = inv.currentHoldPos
+	print(global_position)
 
 
 		

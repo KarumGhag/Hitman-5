@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://d158vnru4o822"]
+[gd_scene load_steps=6 format=3 uid="uid://d158vnru4o822"]
 
 [ext_resource type="PackedScene" uid="uid://r1rcdcocn5hc" path="res://Player/player.tscn" id="1_4v28w"]
 [ext_resource type="PackedScene" uid="uid://l1cil2p7q5eh" path="res://Camera/Camera.tscn" id="2_ismrf"]
 [ext_resource type="Texture2D" uid="uid://bujl8r2dulhlp" path="res://Art/icon.svg" id="3_omi1g"]
 [ext_resource type="PackedScene" uid="uid://dornoguqrdv12" path="res://Guns/Glock.tscn" id="4_3f78f"]
+[ext_resource type="PackedScene" uid="uid://b5qmdauvr33yv" path="res://Guns/Shotgun.tscn" id="5_k8do8"]
 
 [node name="World" type="Node2D"]
 position = Vector2(-4, -7)
@@ -26,3 +27,6 @@ texture = ExtResource("3_omi1g")
 
 [node name="Glock" parent="." instance=ExtResource("4_3f78f")]
 position = Vector2(472, 230)
+
+[node name="Shotgun" parent="." instance=ExtResource("5_k8do8")]
+position = Vector2(291, 371)

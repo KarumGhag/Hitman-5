@@ -68,7 +68,7 @@ func _process(_delta) -> void:
 		headSprite.flip_h = false
 		bodySprite.flip_h = false
 	
-	debugText.text = "To Mouse: " + str(directionToMouse) + "\nLargest dot: " + str(biggestDotIndex) + "\nDots: " + str(dotProducts) + "\nDirection: " + str(currentFacing)
+	debugText.text = "To Mouse: " + str(directionToMouse) + "\nLargest dot: " + str(biggestDotIndex) + "\nDots: " + str(dotProducts) + "\nDirection: " + str(currentFacing) + "\nInv: " + str(player.inventory.inv) + "\nCurrent: " + str(player.currentItem)
 
 func getLargest(arr : Array[float]) -> int:
 	var highest : float = -1
