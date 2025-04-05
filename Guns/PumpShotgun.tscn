@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bo3bswoiqulqq"]
+[gd_scene load_steps=10 format=3 uid="uid://bo3bswoiqulqq"]
 
 [ext_resource type="Script" uid="uid://dgsixfqekfio2" path="res://Gun System/GunClass.gd" id="1_e855d"]
 [ext_resource type="PackedScene" uid="uid://dav0r05sjcywp" path="res://Bullet System/BulletClass.tscn" id="2_kdcke"]
 [ext_resource type="Texture2D" uid="uid://bls0vhd2ss67d" path="res://Guns/PumpShotgun.png" id="3_w4pdv"]
+[ext_resource type="Texture2D" uid="uid://kklx3d50ssbv" path="res://Art/PNG Guns/PumpShotgun.png" id="4_hw5c0"]
 
 [sub_resource type="Animation" id="Animation_blotc"]
 length = 0.8
@@ -30,7 +31,11 @@ radius = 149.121
 [sub_resource type="CircleShape2D" id="CircleShape2D_thvgv"]
 radius = 50.4207
 
-[node name="PumpShotgun" type="Node2D" node_paths=PackedStringArray("shootPoint", "animationPlayer", "shootVectorPoint", "itemSprite", "pickUpArea", "pickUpBox")]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hw5c0"]
+radius = 50.0
+height = 500.0
+
+[node name="PumpShotgun" type="Node2D" node_paths=PackedStringArray("shootPoint", "animationPlayer", "shootVectorPoint", "itemSprite", "itemPNG", "pickUpArea", "pickUpBox")]
 script = ExtResource("1_e855d")
 bullet = ExtResource("2_kdcke")
 shootPoint = NodePath("ShootPoint")
@@ -47,6 +52,7 @@ magSize = 20
 shakeAmount = 10.0
 itemName = "Pump-action Shotgun"
 itemSprite = NodePath("ItemSprite")
+itemPNG = NodePath("ItemPNG")
 pickUpArea = NodePath("PickUpArea")
 pickUpBox = NodePath("PickUpBox")
 
@@ -96,3 +102,14 @@ metadata/_aseprite_wizard_config_ = {
 "source": "res://Art/Guns/PumpShotgun.aseprite"
 }
 metadata/_aseprite_wizard_source_file_hash_ = "b24b2d131ed8590406efd2e3ce695e8f"
+
+[node name="ItemPNG" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -100)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_hw5c0")
+
+[node name="invItemCollider" type="CollisionShape2D" parent="ItemPNG"]
+position = Vector2(0, -10)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_hw5c0")

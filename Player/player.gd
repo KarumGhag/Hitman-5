@@ -33,6 +33,8 @@ var directionToMouse : Vector2
 @export var leftHold : Node2D
 @export var holder : Node2D
 
+@export_subgroup("Animations")
+@export var animator : Node2D
 
 
 

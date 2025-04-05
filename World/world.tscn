@@ -10,7 +10,7 @@
 position = Vector2(-4, -7)
 
 [node name="Player" parent="." instance=ExtResource("1_4v28w")]
-position = Vector2(205, 36)
+position = Vector2(2, -3)
 
 [node name="Camera" parent="." node_paths=PackedStringArray("offsetLabel") instance=ExtResource("2_ismrf")]
 offsetLabel = NodePath("Label")

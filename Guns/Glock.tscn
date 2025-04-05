@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dornoguqrdv12"]
+[gd_scene load_steps=11 format=3 uid="uid://dornoguqrdv12"]
 
 [ext_resource type="Script" uid="uid://dgsixfqekfio2" path="res://Gun System/GunClass.gd" id="1_8trd8"]
 [ext_resource type="PackedScene" uid="uid://dav0r05sjcywp" path="res://Bullet System/BulletClass.tscn" id="2_iv41w"]
 [ext_resource type="Texture2D" uid="uid://c5ujuw17k542v" path="res://Guns/Glock.png" id="2_s7lk7"]
+[ext_resource type="Texture2D" uid="uid://crh67565hpe4l" path="res://Art/PNG Guns/Glock.png" id="3_s3tpe"]
 
 [sub_resource type="Animation" id="Animation_5yrs8"]
 length = 0.1
@@ -46,7 +47,11 @@ radius = 149.121
 [sub_resource type="CircleShape2D" id="CircleShape2D_thvgv"]
 radius = 50.4207
 
-[node name="Glock" type="Node2D" node_paths=PackedStringArray("shootPoint", "animationPlayer", "shootVectorPoint", "itemSprite", "pickUpArea", "pickUpBox")]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s3tpe"]
+radius = 24.0
+height = 48.0
+
+[node name="Glock" type="Node2D" node_paths=PackedStringArray("shootPoint", "animationPlayer", "shootVectorPoint", "itemSprite", "itemPNG", "pickUpArea", "pickUpBox")]
 script = ExtResource("1_8trd8")
 bullet = ExtResource("2_iv41w")
 shootPoint = NodePath("ShootPoint")
@@ -55,6 +60,7 @@ shootVectorPoint = NodePath("ShootVectorPoint")
 bulletSpeed = 1500.0
 itemName = "Glock"
 itemSprite = NodePath("ItemSprite")
+itemPNG = NodePath("ItemPNG")
 pickUpArea = NodePath("PickUpArea")
 pickUpBox = NodePath("PickUpBox")
 
@@ -102,3 +108,13 @@ metadata/_aseprite_wizard_config_ = {
 "source": "res://Art/Guns/Glock.aseprite"
 }
 metadata/_aseprite_wizard_source_file_hash_ = "29d4e4d221828b30f4085f286684e4bd"
+
+[node name="ItemPNG" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -68)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_s3tpe")
+
+[node name="invItemCollider" type="CollisionShape2D" parent="ItemPNG"]
+position = Vector2(0, -2)
+shape = SubResource("CapsuleShape2D_s3tpe")

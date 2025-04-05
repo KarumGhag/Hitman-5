@@ -4,7 +4,10 @@ class_name Item
 
 @export_subgroup("Item")
 @export var itemName : String
+@export var itemScene : PackedScene
 @export var itemSprite : Sprite2D
+@export var itemPNG : Sprite2D
+ 
 @export var pickUpArea : Area2D	## How close you have to be to pick up an item
 @export var pickUpBox : Area2D	## The area you have to click on to pick up the item
 var canPickUp : bool = false
@@ -61,17 +64,25 @@ func pickup() -> void:
 			inv.currentItem = inv.inv[i]
 			equipped = true
 
+			inv.uiUpdate()
+
 			return
 
 func drop() -> void:
 	
+	var currentPos : int = inv.getCurrent(self)
 
 	inInv = false
 	equipped = false
 	inv.currentItem = null
+	inv.inv[currentPos] = null
 
+	
+	
 	global_position = inv.currentHoldPos
 	print(global_position)
+
+	inv.uiUpdate()
 
 
 		

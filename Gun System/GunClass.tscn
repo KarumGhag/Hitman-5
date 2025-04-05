@@ -22,13 +22,12 @@ radius = 149.121
 [sub_resource type="CircleShape2D" id="CircleShape2D_thvgv"]
 radius = 50.4207
 
-[node name="GunClass" type="Node2D" node_paths=PackedStringArray("shootPoint", "animationPlayer", "shootVectorPoint", "itemSprite", "pickUpArea", "pickUpBox")]
+[node name="GunClass" type="Node2D" node_paths=PackedStringArray("shootPoint", "animationPlayer", "shootVectorPoint", "pickUpArea", "pickUpBox")]
 script = ExtResource("1_its6t")
 shootPoint = NodePath("ShootPoint")
 animationPlayer = NodePath("AnimationPlayer")
 shootVectorPoint = NodePath("ShootVectorPoint")
 itemName = "Glock"
-itemSprite = NodePath("ItemSprite")
 pickUpArea = NodePath("PickUpArea")
 pickUpBox = NodePath("PickUpBox")
 
@@ -54,5 +53,3 @@ position = Vector2(24, -2)
 
 [node name="ShootVectorPoint" type="Node2D" parent="."]
 position = Vector2(-14, -2)
-
-[node name="ItemSprite" type="Sprite2D" parent="."]

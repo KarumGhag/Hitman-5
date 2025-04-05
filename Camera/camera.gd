@@ -24,6 +24,8 @@ var lean : Vector2
 #the fix is to use this exact code and do NOT make the camera a child of the player
 #instead put it into the world and set the global positon equal to the player's global position
 
+@export var active : bool = true
+
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("Player")
 
@@ -34,10 +36,11 @@ func _process(delta):
 	distanceToMouse = mousePos.distance_to(position)
 
 	#camera leans more when holding an item
-	if player.currentItem != null:
-		lean = directionToMouse * distanceToMouse * heldLean
-	else:
-		lean = directionToMouse * distanceToMouse * unheldLean
+	if active:
+		if player.currentItem != null:
+			lean = directionToMouse * distanceToMouse * heldLean
+		else:
+			lean = directionToMouse * distanceToMouse * unheldLean
 
 	
 	#lean = directionToMouse * distanceToMouse * unheldLean
