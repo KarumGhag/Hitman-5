@@ -17,7 +17,7 @@ var equipped : bool = false
 var inInv : bool = false
 
 var player : Player
-var inv : PlayerInv
+@onready var inv : playerInv = get_node("/root/playerInventory")
 
 var camera : Camera2D
 

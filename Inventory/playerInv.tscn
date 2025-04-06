@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://bs7g2gr6nrxft"]
+
+[ext_resource type="Script" uid="uid://cwij3kfbw3nga" path="res://Inventory/PlayerInv.gd" id="1_vtchc"]
+
+[node name="PlayerInventory" type="Node2D" node_paths=PackedStringArray("itemRepresent", "itemButtons", "ui", "currentRep", "nextRep", "prevRep")]
+script = ExtResource("1_vtchc")
+itemRepresent = [NodePath("UI/sprites/current"), null, null, null, null, null, null, null, null, null]
+itemButtons = [null, null, null, null, null, null, null, null, null, null]
+ui = NodePath("UI")
+currentRep = NodePath("UI/sprites/current")
+nextRep = NodePath("UI/sprites/next")
+prevRep = NodePath("UI/sprites/prev")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = -8.0
+offset_bottom = -8.0
+
+[node name="sprites" type="Node2D" parent="UI"]
+
+[node name="current" type="Sprite2D" parent="UI/sprites"]
+
+[node name="next" type="Sprite2D" parent="UI/sprites"]
+position = Vector2(110, 0)
+
+[node name="prev" type="Sprite2D" parent="UI/sprites"]
+position = Vector2(-90, 0)

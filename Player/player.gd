@@ -12,10 +12,10 @@ var steering : Vector2
 @export var mass : float = 3
 
 @export_subgroup("Inventory")
-@export var holdFlipper : Node2D
+@export var uiPos : Node2D
 @export var holdNode : Node2D
 var holdPos : Vector2
-@export var inventory : PlayerInv
+@onready var inventory = get_node("/root/playerInventory")
 var currentItem : Item
 
 #Getting direction to face

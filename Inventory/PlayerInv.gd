@@ -1,6 +1,6 @@
 extends Node2D
 
-class_name PlayerInv
+class_name playerInv
 
 var inv : Array[Item] = [null]
 var invSize : int = 10
@@ -198,6 +198,8 @@ func uiReady() -> void:
 
 
 func uiProcess() -> void:
+
+	ui.global_position = player.uiPos.global_position
 
 	if Input.is_action_just_pressed("pickup") or Input.is_action_just_pressed("drop") or Input.is_action_just_pressed("inventory") or Input.is_action_just_pressed("nextItem") or Input.is_action_just_pressed("prevItem"):
 		uiUpdate()
