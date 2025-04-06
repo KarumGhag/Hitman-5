@@ -1,11 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://r1rcdcocn5hc"]
+[gd_scene load_steps=15 format=3 uid="uid://r1rcdcocn5hc"]
 
 [ext_resource type="Script" uid="uid://ckxvqgoqxt3hh" path="res://Player/player.gd" id="1_bvebw"]
 [ext_resource type="Texture2D" uid="uid://d3ttw7pny6au8" path="res://Player/Player.png" id="2_5l58u"]
 [ext_resource type="Texture2D" uid="uid://bi1m84u5rnjuw" path="res://Player/PlayerHead.png" id="2_7wdtj"]
 [ext_resource type="Script" uid="uid://cwij3kfbw3nga" path="res://Inventory/PlayerInv.gd" id="4_gwnis"]
 [ext_resource type="Script" uid="uid://cchqjwlsf03he" path="res://Player/player_shoot.gd" id="6_fhl08"]
-[ext_resource type="Texture2D" uid="uid://kklx3d50ssbv" path="res://Art/PNG Guns/PumpShotgun.png" id="6_od3ui"]
 [ext_resource type="Script" uid="uid://d3uec1c82qn8d" path="res://Player/animator.gd" id="6_vtle1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gfpsm"]
@@ -200,34 +199,28 @@ bodySprite = NodePath("../PlayerBody")
 bodyAnimator = NodePath("../PlayerBody/BodyAnim")
 headAnimator = NodePath("../HeadSprite/HeadAnim")
 
-[node name="Inventory" type="Node2D" parent="." node_paths=PackedStringArray("itemRepresent", "itemButtons", "ui", "currentRep", "rightRep", "leftRep")]
+[node name="Inventory" type="Node2D" parent="." node_paths=PackedStringArray("itemRepresent", "itemButtons", "ui", "currentRep", "nextRep", "prevRep")]
 script = ExtResource("4_gwnis")
-itemRepresent = [NodePath("UI/sprites/current"), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath("")]
-itemButtons = [NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath("")]
+itemRepresent = [NodePath("UI/sprites/current"), null, null, null, null, null, null, null, null, null]
+itemButtons = [null, null, null, null, null, null, null, null, null, null]
 ui = NodePath("UI")
 currentRep = NodePath("UI/sprites/current")
-rightRep = NodePath("UI/sprites/right")
-leftRep = NodePath("UI/sprites/left")
+nextRep = NodePath("UI/sprites/next")
+prevRep = NodePath("UI/sprites/prev")
 
 [node name="UI" type="Control" parent="Inventory"]
 layout_mode = 3
 anchors_preset = 0
-offset_top = -3.0
-offset_bottom = -3.0
+offset_top = -8.0
+offset_bottom = -8.0
 
 [node name="sprites" type="Node2D" parent="Inventory/UI"]
+position = Vector2(0, -71)
 
 [node name="current" type="Sprite2D" parent="Inventory/UI/sprites"]
-position = Vector2(0, -200)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("6_od3ui")
 
-[node name="right" type="Sprite2D" parent="Inventory/UI/sprites"]
-position = Vector2(90, -200)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("6_od3ui")
+[node name="next" type="Sprite2D" parent="Inventory/UI/sprites"]
+position = Vector2(110, 0)
 
-[node name="left" type="Sprite2D" parent="Inventory/UI/sprites"]
-position = Vector2(-90, -200)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("6_od3ui")
+[node name="prev" type="Sprite2D" parent="Inventory/UI/sprites"]
+position = Vector2(-90, 0)

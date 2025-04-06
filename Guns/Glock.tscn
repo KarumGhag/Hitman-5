@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dornoguqrdv12"]
+[gd_scene load_steps=10 format=3 uid="uid://dornoguqrdv12"]
 
 [ext_resource type="Script" uid="uid://dgsixfqekfio2" path="res://Gun System/GunClass.gd" id="1_8trd8"]
 [ext_resource type="PackedScene" uid="uid://dav0r05sjcywp" path="res://Bullet System/BulletClass.tscn" id="2_iv41w"]
@@ -46,10 +46,6 @@ radius = 149.121
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_thvgv"]
 radius = 50.4207
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s3tpe"]
-radius = 24.0
-height = 48.0
 
 [node name="Glock" type="Node2D" node_paths=PackedStringArray("shootPoint", "animationPlayer", "shootVectorPoint", "itemSprite", "itemPNG", "pickUpArea", "pickUpBox")]
 script = ExtResource("1_8trd8")
@@ -114,7 +110,3 @@ visible = false
 position = Vector2(0, -68)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_s3tpe")
-
-[node name="invItemCollider" type="CollisionShape2D" parent="ItemPNG"]
-position = Vector2(0, -2)
-shape = SubResource("CapsuleShape2D_s3tpe")

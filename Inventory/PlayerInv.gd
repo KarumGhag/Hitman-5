@@ -43,28 +43,32 @@ func _process(_delta) -> void:
 
 
 	if Input.is_action_just_pressed("nextItem") and not holstered and currentItem != null:
-
 		currentItem.equipped = false
 		currentItem = inv[getNext(getCurrent())]
 		currentItem.equipped = true
+		uiUpdate()
 	if Input.is_action_just_pressed("prevItem") and not holstered and currentItem != null:
 		currentItem.equipped = false
 		currentItem = inv[getPrev(getCurrent())]
 		currentItem.equipped = true
+		uiUpdate()
 
 	if Input.is_action_just_pressed("drop") and currentItem != null:
 		currentItem.drop()
+		uiUpdate()
 
 
 #if holstered a temp item is set to the next or prev and then the last equipped item is changed and the current item is re holstered
 	if Input.is_action_just_pressed("nextItem") and holstered:
 		tempItem = inv[getNext(getCurrent(tempItem))] #temp item is used so it can search for a specific item
 		lastEquipedItem = getCurrent(tempItem) #updates what the item should be when un holstered
+		uiUpdate()
 
 
 	if Input.is_action_just_pressed("prevItem") and holstered:
 		tempItem = inv[getPrev(getCurrent(tempItem))]
 		lastEquipedItem = getCurrent(tempItem)
+		uiUpdate()
 
 
 	if Input.is_action_just_pressed("holster") and not isEmpty():
@@ -77,6 +81,7 @@ func _process(_delta) -> void:
 			currentItem.equipped = true
 
 		holstered = not holstered #toggles the value
+		uiUpdate()
 
 
 
@@ -140,7 +145,7 @@ func getPrev(currentPos) -> int:
 		if inv[currentPos] != null:
 			break
 
-
+	
 	return currentPos
 
 
@@ -183,12 +188,13 @@ var chosenPos : int
 
 
 @export var currentRep : Sprite2D
-@export var rightRep : Sprite2D
-@export var leftRep : Sprite2D
+@export var nextRep : Sprite2D
+@export var prevRep : Sprite2D
 
 
 func uiReady() -> void:
 	open = false
+	uiUpdate()
 
 
 func uiProcess() -> void:
@@ -203,14 +209,26 @@ func uiProcess() -> void:
 
 
 func uiUpdate() -> void:
-	return
+	if not open:
+		ui.visible = false
 
 	#if the inventory is empty then it should set the sprites to nothing
 	if isEmpty():
 		currentRep.texture = null
-		rightRep.texture = null
-		leftRep.texture = null
+		nextRep.texture = null
+		prevRep.texture = null
+
+	if currentItem == null:
+		return
+	
 
 	currentRep.texture = currentItem.itemPNG.texture
+	currentRep.scale = currentItem.itemPNG.scale * 2
+
 	if getNext(getCurrent()) != getCurrent():
-		print("test")
+		nextRep.texture = inv[getNext(getCurrent())].itemPNG.texture 
+		nextRep.scale = inv[getNext(getCurrent())].itemPNG.scale
+
+	if getPrev(getCurrent()) != getCurrent() and getPrev(getCurrent()) != getNext(getCurrent()):
+		prevRep.texture = inv[getNext(getCurrent())].itemPNG.texture
+		prevRep.scale = inv[getNext(getCurrent())].itemPNG.scale
