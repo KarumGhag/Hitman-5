@@ -18,16 +18,6 @@ var holdPos : Vector2
 @onready var inventory = get_node("/root/playerInventory")
 var currentItem : Item
 
-#Getting direction to face
-var facing : Array[String] = ["Right", "Left", "Up", "Down", "BotRight", "BotLeft", "TopRight", "TopLeft"]
-
-var currentFacingInt : int
-var currentFacing : String
-var directionVectors : Array[Vector2] = [Vector2.RIGHT, Vector2.LEFT, Vector2.UP, Vector2.DOWN, Vector2(1, 1), Vector2(-1, 1), Vector2(1, -1), Vector2(-1, -1)]
-var dotProducts : Array[float] = [0, 0, 0, 0, 0, 0, 0, 0]
-var biggestDotIndex : int
-var directionToMouse : Vector2
-
 @export_subgroup("Holders")
 @export var rightHold : Node2D
 @export var leftHold : Node2D
@@ -64,17 +54,3 @@ func _process(_delta) -> void:
 
 
 
-
-
-
-
-func getLargest(arr : Array[float]) -> int:
-	var highest : float = -1
-	var index : int = -1
-
-	for i in range(len(arr)):
-		if arr[i] > highest:
-			highest = arr[i]
-			index = i
-
-	return index
